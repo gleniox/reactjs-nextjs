@@ -1,28 +1,19 @@
-import React, { useState } from "react";
+import loadingStatus from "@/helpers/loadingStatus";
+import useExpenses from "../hooks/useExpenses";
 import ExpenseRow from "./expenseRow";
+import LoadingIndicator from "./loadingIndicator";
 
-const expensesArray = [
-  {
-    id: 1,
-    expenseType: "Dinner",
-    date: "31/10/2024",
-    price: 49.4,
-  },
-  {
-    id: 2,
-    expenseType: "Parking",
-    date: "31/10/2024",
-    price: 25,
-  },
-];
+const ExpensesList = ({ selectedExpense }) => {
+  const [expenses, setExpenses, loadingState] = useExpenses();
 
-const ExpensesList = () => {
-  const [expenses, setExpenses] = useState(expensesArray);
+  if (loadingState !== loadingStatus.loaded)
+    return <LoadingIndicator loadingState={loadingState} />;
+
   const addExpense = () => {
     setExpenses([
       ...expenses,
       {
-        id: 3,
+        id: 4,
         expenseType: "Ice Cream",
         date: "05/11/2024",
         price: 15.5,
@@ -45,11 +36,17 @@ const ExpensesList = () => {
         </thead>
         <tbody>
           {expenses.map((expense) => (
-            <ExpenseRow key={expense.id} expense={expense} />
+            <ExpenseRow
+              key={expense.id}
+              expense={expense}
+              selectedExpense={selectedExpense}
+            />
           ))}
         </tbody>
       </table>
-      <button className="btn btn-primary" onClick={addExpense}>Add</button>
+      <button className="btn btn-primary" onClick={addExpense}>
+        Add
+      </button>
     </>
   );
 };

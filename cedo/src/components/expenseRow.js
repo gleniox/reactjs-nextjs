@@ -1,11 +1,15 @@
-import currencyFormatter from "../helpers/currencyFormatter"
+import currencyFormatter from "../helpers/currencyFormatter";
 
-const ExpenseRow = ({ expense }) => {
+const ExpenseRow = ({ expense, selectedExpense }) => {
   return (
-    <tr>
+    <tr onClick={() => selectedExpense(expense)}>
       <td>{expense.expenseType}</td>
       <td>{expense.date}</td>
-      <td>{currencyFormatter.format(expense.price)}</td>
+      {expense.price && (
+        <td className={`${expense.price >= 50 ? "text-primary" : ""}`}>
+          {currencyFormatter.format(expense.price)}
+        </td>
+      )}
     </tr>
   );
 };

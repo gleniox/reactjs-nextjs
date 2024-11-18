@@ -1,0 +1,22 @@
+{
+  "expenses": [
+    {
+      "id": 1,
+      "expenseType": "Dinner",
+      "date": "31/10/2024",
+      "price": 50.4
+    },
+    {
+      "id": 2,
+      "expenseType": "Parking",
+      "date": "31/10/2024",
+      "price": 25
+    },
+    {
+      "id": 3,
+      "expenseType": "Playground",
+      "date": "11/11/2024",
+      "price": 80
+    }
+  ]
+}

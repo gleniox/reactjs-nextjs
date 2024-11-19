@@ -1,10 +1,20 @@
 import Image from "next/image";
+import { useContext } from "react";
+import { navigationContext } from "./app";
+import navValues from "@/helpers/navValues";
 
 const Banner = ({ currentYear }) => {
+  const { navigate } = useContext(navigationContext);
   return (
     <header className="row mb-4">
       <div className="col-2">
-        <Image height="158" width="158" src="/logo.jpeg" alt="logo" />
+        <img
+          height="158"
+          width="158"
+          src="/logo.jpeg"
+          alt="logo"
+          onClick={() => navigate(navValues.home)}
+        />
       </div>
       <div className="col-10 mt-5">
         <div>Cedo Expense Tracking System {currentYear}</div>

@@ -3,7 +3,7 @@ import useExpenses from "../hooks/useExpenses";
 import ExpenseRow from "./expenseRow";
 import LoadingIndicator from "./loadingIndicator";
 
-const ExpensesList = ({ selectedExpense }) => {
+const ExpensesList = () => {
   const [expenses, setExpenses, loadingState] = useExpenses();
 
   if (loadingState !== loadingStatus.loaded)
@@ -36,11 +36,7 @@ const ExpensesList = ({ selectedExpense }) => {
         </thead>
         <tbody>
           {expenses.map((expense) => (
-            <ExpenseRow
-              key={expense.id}
-              expense={expense}
-              selectedExpense={selectedExpense}
-            />
+            <ExpenseRow key={expense.id} expense={expense} />
           ))}
         </tbody>
       </table>

@@ -1,8 +1,12 @@
+import { useContext } from "react";
 import currencyFormatter from "../helpers/currencyFormatter";
+import { navigationContext } from "./app";
+import navValues from "@/helpers/navValues";
 
-const ExpenseRow = ({ expense, selectedExpense }) => {
+const ExpenseRow = ({ expense }) => {
+  const { navigate } = useContext(navigationContext);
   return (
-    <tr onClick={() => selectedExpense(expense)}>
+    <tr onClick={() => navigate(navValues.expense, expense)}>
       <td>{expense.expenseType}</td>
       <td>{expense.date}</td>
       {expense.price && (

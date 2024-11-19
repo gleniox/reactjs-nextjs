@@ -1,21 +1,25 @@
-import { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Banner from "./banner";
-import ExpensesList from "./expensesList";
-import Expense from "./expense";
+import navValues from "@/helpers/navValues";
+import ComponentPicker from "./componentPicker";
+
+const navigationContext = React.createContext(navValues.home);
 
 const App = () => {
-  const [selectedExpense, setSelectedExpense] = useState();
-
+  const navigate = useCallback(
+    (navTo, param) => setNav({ current: navTo, param, navigate }),
+    []
+  );
+  const [nav, setNav] = useState({ current: navValues.home, navigate });
   return (
     <>
-      <Banner currentYear="2024" />
-      {selectedExpense ? (
-        <Expense expense={selectedExpense} />
-      ) : (
-        <ExpensesList selectedExpense={setSelectedExpense} />
-      )}
+      <navigationContext.Provider value={nav}>
+        <Banner currentYear="2024" />
+        <ComponentPicker currentNavLocation={nav.current} />
+      </navigationContext.Provider>
     </>
   );
 };
 
+export { navigationContext };
 export default App;

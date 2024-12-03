@@ -44,6 +44,21 @@
       "expenseId": 4,
       "description": "Ice 1",
       "id": 9
+    },
+    {
+      "expenseId": 1,
+      "description": "",
+      "id": 10
+    },
+    {
+      "expenseId": 1,
+      "description": "",
+      "id": 11
+    },
+    {
+      "expenseId": 1,
+      "description": "Ice 1",
+      "id": 12
     }
   ]
 }
